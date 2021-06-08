@@ -4,6 +4,7 @@ import telebot
 import requests
 import matplotlib
 import matplotlib.pyplot as plt
+from datetime import date, timedelta
 
 bot = telebot.TeleBot("775660511:AAH_RTkqVUsT9sEK5W7CpE1JdTepfVYjObQ", parse_mode=None)
 matplotlib.pyplot.switch_backend('Agg')
@@ -11,8 +12,7 @@ matplotlib.pyplot.switch_backend('Agg')
 
 @bot.message_handler(commands=['find_crypto_rate'])
 def send_welcome(message):
-    print(message)
-    bot.send_message(message.chat.id, "Choose crypto to show?")
+    bot.send_message(message.chat.id, "What crypto do you want to see?")
 
 
 @bot.message_handler(content_types=['text'])
@@ -29,9 +29,7 @@ def currency_handler(message):
             needed_currency +
             '/market_chart?vs_currency=usd&days=6&interval=daily')
         seven_days_rates = [float(item[1]) for item in daily_rate.json()['prices']]
-        plt.plot(['Mon', 'Tue', 'Wend', 'Thur', 'Fri', 'Sun', 'Sat'], seven_days_rates)
-        plt.savefig('fig.png')
-        plt.close()
+        graph_builder(dates_getter(), seven_days_rates)
         time.sleep(3)
         bot.send_message(message.chat.id, f'Current {message.text} rate is: \n\n{answ}$')
         time.sleep(3)
@@ -42,6 +40,26 @@ def currency_handler(message):
             os.remove('fig.png')
     else:
         bot.send_message(message.chat.id, 'Fuck off than!')
+
+
+def dates_getter():
+    days = []
+    i = 0
+    while i != 7:
+        days.append((date.today() - timedelta(days=i)).strftime("%m.%d"))
+        i += 1
+    x = sorted(days, reverse=False)
+    return x
+
+
+def graph_builder(dates, rates):
+    plt.plot(dates, rates)
+    plt.title("7 Days Graph")
+    plt.xlabel("Dates")
+    plt.ylabel("Price")
+    plt.grid()
+    plt.savefig('fig.png')
+    plt.close()
 
 
 bot.polling(none_stop=True, interval=0)
