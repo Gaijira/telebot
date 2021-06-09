@@ -1,5 +1,4 @@
 import os
-import time
 import telebot
 import requests
 import matplotlib
@@ -30,16 +29,14 @@ def currency_handler(message):
             '/market_chart?vs_currency=usd&days=6&interval=daily')
         seven_days_rates = [float(item[1]) for item in daily_rate.json()['prices']]
         graph_builder(dates_getter(), seven_days_rates)
-        time.sleep(3)
         bot.send_message(message.chat.id, f'Current {message.text} rate is: \n\n{answ}$')
-        time.sleep(3)
         bot.send_message(message.chat.id, f'Do you want to see {message.text} line chart?')
     elif message.text.lower() == 'yes':
         if 'fig.png':
             bot.send_photo(message.chat.id, open('fig.png', 'rb'))
             os.remove('fig.png')
     else:
-        bot.send_message(message.chat.id, 'Fuck off than!')
+        bot.send_message(message.chat.id, 'Terminate...')
 
 
 def dates_getter():
