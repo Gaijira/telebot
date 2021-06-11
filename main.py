@@ -10,7 +10,7 @@ matplotlib.pyplot.switch_backend('Agg')
 
 
 def dates_getter():
-    """Получаем текущий день и 6 дней назад в реверсед формате"""
+    """Получаем текущий день и 6 дней назад"""
     days = []
     i = 0
     while i != 7:
@@ -69,6 +69,8 @@ def currency_handler(message):
             os.remove('fig.png')
     else:
         bot.send_message(message.chat.id, 'Terminate...')
+        if 'fig.png':
+            os.remove('fig.png')
 
 
 bot.polling(none_stop=True, interval=0)
