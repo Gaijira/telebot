@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
 
-bot = telebot.TeleBot("775660511:AAH_RTkqVUsT9sEK5W7CpE1JdTepfVYjObQ")
+bot = telebot.TeleBot("775660511:AAH_RTkqVUsT9sEK5W7CpE1JdTepfVYjObQ", parse_mode=None)
 matplotlib.pyplot.switch_backend('Agg')
 
 

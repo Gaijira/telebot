@@ -2,3 +2,4 @@ telebot
 requests
 matplotlib
 datetime
+PyTelegramBotAPI
