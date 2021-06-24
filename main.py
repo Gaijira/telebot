@@ -5,7 +5,7 @@ import telebot
 import matplotlib
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
-from from PyTelegramBotAPI import telebot
+from PyTelegramBotAPI import telebot
 
 
 token = S3Connection(os.environ['TOKEN']
