@@ -1,6 +1,5 @@
 requests
 matplotlib
 datetime
-telebot
 PyTelegramBotAPI
 boto
