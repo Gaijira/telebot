@@ -1,10 +1,13 @@
 import os
-import telebot
+from boto.s3.connection import S3Connection
 import requests
+import telebot
 import matplotlib
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
 
+
+token = S3Connection(os.environ['token']
 bot = telebot.TeleBot(token, parse_mode=None)
 matplotlib.pyplot.switch_backend('Agg')
 
