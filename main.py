@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from datetime import date, timedelta
 
 
-token = S3Connection(os.environ['token']
+token = S3Connection(os.environ['TOKEN']
 bot = telebot.TeleBot(token, parse_mode=None)
 matplotlib.pyplot.switch_backend('Agg')
 
