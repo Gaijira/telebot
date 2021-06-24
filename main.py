@@ -6,8 +6,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
 
-s3 = S3Connection(os.environ['token']
-bot = telebot.TeleBot('token')
+token = S3Connection(os.environ['token']
+bot = telebot.TeleBot(token, parse_mode=None)
 matplotlib.pyplot.switch_backend('Agg')
 
 
