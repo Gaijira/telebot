@@ -1,14 +1,13 @@
 import os
 from boto.s3.connection import S3Connection
 import requests
-import telebot
 import matplotlib
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
-from PyTelegramBotAPI import telebot
+import telebot
 
 
-token = S3Connection(os.environ['TOKEN']
+token = S3Connection(os.environ['TOKEN'])
 bot = telebot.TeleBot(token, parse_mode=None)
 matplotlib.pyplot.switch_backend('Agg')
 
