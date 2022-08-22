@@ -47,7 +47,7 @@ def get_7days_rate(currency):
     daily_rate = requests.get(
         f'https://api.coingecko.com/api/v3/coins/' +
         currency +
-        '/market_chart?vs_currency=usd&days=28&interval=weekly')
+        '/market_chart?vs_currency=usd&days=6&interval=daily')
     return daily_rate
 
 
