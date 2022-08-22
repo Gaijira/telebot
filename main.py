@@ -15,8 +15,8 @@ def dates_getter():
     """Получаем текущий день и 6 дней назад"""
     days = []
     i = 0
-    while i != 7:
-        days.append((date.today() - timedelta(days=i)).strftime("%m.%d"))
+    while i != 4:
+        days.append((date.today() - timedelta(weeks=i)).strftime("%m.%d"))
         i += 1
     x = sorted(days, reverse=False)
     return x
